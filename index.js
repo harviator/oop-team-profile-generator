@@ -123,12 +123,15 @@ const addAnother = () => {
         {
             type: "confirm",
             message: "Would you like to add another employee?",
-            name: 
+            name: "addAnother",
         }
     ])
-    .them (response) {
-        //if false turn addMember to false.
-    }
+    .them ((response) => {
+        
+        if (response.addAnother === false) {
+            addMembers = false;
+        }
+    })
 }
 
 //function to initalize the application
@@ -153,7 +156,7 @@ const init = () => {
             generateIntern();
         }
 
-        //addAnother. 
+        addAnother();
     })
     .then
 }
