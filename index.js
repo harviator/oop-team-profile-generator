@@ -3,6 +3,8 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Engineer = require()
 
+let addMembers = true;
+
 let employees = [];
 
 
@@ -73,7 +75,7 @@ const generateEngineer = () => {
 
         console.log(engineerResponse);
 
-        const newEngineer = new Engineer(engineerResponse);
+        const newEngineer = new Engineer(engineerResponse.name, engineerResponse.id, engineerResponse.email, engineerResponse.github);
 
         employees.push(newEngineer);
 
@@ -108,7 +110,7 @@ const generateIntern = () => {
 
         console.log(internResponse);
 
-        const newIntern = new Intern(internResponse);
+        const newIntern = new Intern(internResponse.name, internResponse.id, internResponse.email, internResponse.school);
 
         employees.push(newIntern);
 
@@ -117,7 +119,16 @@ const generateIntern = () => {
 }
 
 const addAnother = () => {
-
+    inquirer.prompt([
+        {
+            type: "confirm",
+            message: "Would you like to add another employee?",
+            name: 
+        }
+    ])
+    .them (response) {
+        //if false turn addMember to false.
+    }
 }
 
 //function to initalize the application
@@ -141,7 +152,12 @@ const init = () => {
         } else if (response.name == "Intern") {
             generateIntern();
         }
+
+        //addAnother. 
     })
+    .then
 }
 
-init();
+while (addMembers === true) {
+    init();
+}
