@@ -1,15 +1,13 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const Manager = require('./lib/Manager');
-const Engineer = require()
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
-let addMembers = true;
-
+//Array to collect employee information
 let employees = [];
 
-
-//how do I override the roles?
-
+//Function to generate Manager
 const generateManager = () => {
     inquirer.prompt([
         {
@@ -33,21 +31,17 @@ const generateManager = () => {
             name: "officeNumber"
         }
     ])
-    .then((managerResponse) => {
+        .then((managerResponse) => {
 
-        console.log(managerResponse);
+            const newManager = new Manager(managerResponse.name, managerResponse.id, managerResponse.email, managerResponse.officeNumber);
 
-        const newManager = new Manager(managerResponse.name, managerResponse.id, managerResponse.email, managerResponse.officeNumber);
+            employees.push(newManager);
 
-        console.log(newManager)
-
-
-        employees.push(newManager);
-
-        console.log(employees);
-    })
+            addAnother();
+        })
 }
 
+//Function to generate engineer
 const generateEngineer = () => {
     inquirer.prompt([
         {
@@ -71,18 +65,17 @@ const generateEngineer = () => {
             name: "github"
         }
     ])
-    .then((engineerResponse) => {
-
-        console.log(engineerResponse);
+        .then((engineerResponse) => {
 
         const newEngineer = new Engineer(engineerResponse.name, engineerResponse.id, engineerResponse.email, engineerResponse.github);
 
         employees.push(newEngineer);
 
-        console.log(employees);
+        addAnother();
     })
 }
 
+//Function to generate intern
 const generateIntern = () => {
     inquirer.prompt([
         {
@@ -106,33 +99,17 @@ const generateIntern = () => {
             name: "school"
         }
     ])
-    .then((internResponse) => {
+        .then((internResponse) => {
 
-        console.log(internResponse);
+            const newIntern = new Intern(internResponse.name, internResponse.id, internResponse.email, internResponse.school);
 
-        const newIntern = new Intern(internResponse.name, internResponse.id, internResponse.email, internResponse.school);
+            employees.push(newIntern);
 
-        employees.push(newIntern);
-
-        console.log(employees);
-    })
+            addAnother();
+        })
 }
 
-const addAnother = () => {
-    inquirer.prompt([
-        {
-            type: "confirm",
-            message: "Would you like to add another employee?",
-            name: "addAnother",
-        }
-    ])
-    .them ((response) => {
-        
-        if (response.addAnother === false) {
-            addMembers = false;
-        }
-    })
-}
+
 
 //function to initalize the application
 const init = () => {
@@ -144,23 +121,51 @@ const init = () => {
             choices: ["Manager", "Engineer", "Intern"],
         }
     ])
-    .then((response) => {
+        .then((response) => {
 
-        console.log(response);
+            if (response.role == "Manager") {
+                generateManager();
+            } else if (response.role == "Engineer") {
+                generateEngineer();
+            } else if (response.role == "Intern") {
+                generateIntern();
+            }
 
-        if (response.role == "Manager") {
-            generateManager();
-        } else if (response.name == "Engineer") {
-            generateEngineer();
-        } else if (response.name == "Intern") {
-            generateIntern();
+        })
+}
+
+const addAnother = () => {
+    inquirer.prompt([
+        {
+            type: "confirm",
+            message: "Would you like to add another employee?",
+            name: "addAnother",
         }
+    ])
+        .then((response) => {
 
-        addAnother();
-    })
-    .then
+            if (response.addAnother === true) {
+                init()
+            }
+            else {
+                console.log(employees)
+                //[{jon},{},{}]
+                //employees[0].getSchool()//
+                //create the html
+                //the return html from that will go into fs.writeFile
+            }
+        })
 }
 
-while (addMembers === true) {
-    init();
-}
+init();
+
+
+
+/*
+
+-----Notes:------
+
+Questions:
+    How do I override the roles?
+
+*/
