@@ -1,9 +1,11 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const Manager = require('./lib/Manager');
+const Engineer = require()
 
 let employees = [];
 
-const Manager = require('./lib/Manager');
+
 //how do I override the roles?
 
 const generateManager = () => {
@@ -33,7 +35,7 @@ const generateManager = () => {
 
         console.log(managerResponse);
 
-        const newManager = new Manager(managerResponse.name,managerResponse.id,managerResponse.email,managerResponse.officeNumber);
+        const newManager = new Manager(managerResponse.name, managerResponse.id, managerResponse.email, managerResponse.officeNumber);
 
         console.log(newManager)
 
