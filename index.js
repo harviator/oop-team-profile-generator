@@ -3,6 +3,7 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const generateHTML = require('./src/generateHTML');
 
 //Array to collect employee information
 let employees = [];
@@ -67,12 +68,12 @@ const generateEngineer = () => {
     ])
         .then((engineerResponse) => {
 
-        const newEngineer = new Engineer(engineerResponse.name, engineerResponse.id, engineerResponse.email, engineerResponse.github);
+            const newEngineer = new Engineer(engineerResponse.name, engineerResponse.id, engineerResponse.email, engineerResponse.github);
 
-        employees.push(newEngineer);
+            employees.push(newEngineer);
 
-        addAnother();
-    })
+            addAnother();
+        })
 }
 
 //Function to generate intern
@@ -149,23 +150,19 @@ const addAnother = () => {
             }
             else {
                 console.log(employees)
-                //[{jon},{},{}]
-                //employees[0].getSchool()//
-                //create the html
-                //the return html from that will go into fs.writeFile
+
+                const returnedHTML = generateHTML(employees);
+
+                writeToFile('index.html', returnedHTML);
             }
         })
 }
 
+function writeToFile(fileName, data) {
+
+    fs.writeFile(fileName, data, err => {
+        err ? console.log(err) : console.log('Great Success!');
+    })
+}
+
 init();
-
-
-
-/*
-
------Notes:------
-
-Questions:
-    How do I override the roles?
-
-*/
