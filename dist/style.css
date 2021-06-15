@@ -1,0 +1,57 @@
+:root {
+    --space-cadet: #2b2d42ff;
+    --manatee: #8d99aeff;
+    --alice-blue: #edf2f4ff;
+    --imperial-red: #ef233cff;
+    --amaranth-red: #d90429ff;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    font-family: 'Saira Stencil One', cursive;
+    font-size: 75px;
+    background-color: var(--amaranth-red);
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    padding: 100px;
+}
+
+main {
+    display: flex;
+    padding: 50px;
+    justify-content: space-around;
+}
+
+
+.card-body {
+    background-color: var(--alice-blue);
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px var(--space-cadet);
+    padding: 10px 10px 10px 10px;
+}
+
+.card-title {
+    font-family: 'Saira Stencil One', cursive;
+    font-size: 30px;
+    margin: 0px;
+    padding: 5px 5px 10px 5px;
+    background-color: var(--manatee);
+    color: var(--space-cadet);
+}
+
+.card-subtitle {
+    margin: 0px;
+    padding: 5px 5px 10px 5px;
+    background-color: var(--manatee);
+    color: var(--imperial-red);
+}
