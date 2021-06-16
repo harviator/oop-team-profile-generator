@@ -151,7 +151,7 @@ const addAnother = () => {
 
                 const returnedHTML = generateHTML(employees);
 
-                writeToFile('index.html', returnedHTML);
+                writeToFile('./dist/index.html', returnedHTML);
             }
         })
 }
