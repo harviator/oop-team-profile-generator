@@ -1,48 +1,48 @@
 function generateManager(manager) {
-    return `<div class="card" style="width: 18rem;">
+    return `\n <div class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">${manager.getName()}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">${manager.getRole()}</h6>
+        <h6 class="card-subtitle mb-2"><i class="fas fa-user-tie"></i>  ${manager.getRole()}</h6>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">${manager.getId()}</li>
-            <li class="list-group-item">${manager.getEmail()}</li>
-            <li class="list-group-item">${manager.getOfficeNumber()}</li>
+            <li class="list-group-item">ID: ${manager.getId()}</li>
+            <li class="list-group-item">Email: ${manager.getEmail()}</li>
+            <li class="list-group-item">Office Number: ${manager.getOfficeNumber()}</li>
         </ul>
     </div>
-</div>`
+</div> \n`
 }
 
 function generateEngineer(engineer) {
-    return `<div class="card" style="width: 18rem;">
+    return `\n <div class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">${engineer.getName()}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">${engineer.getRole()}</h6>
+        <h6 class="card-subtitle mb-2"><i class="fas fa-user-astronaut"></i>  ${engineer.getRole()}</h6>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">${engineer.getId()}</li>
-            <li class="list-group-item">${engineer.getEmail()}</li>
-            <li class="list-group-item">${engineer.getGithub()}</li>
+            <li class="list-group-item">ID: ${engineer.getId()}</li>
+            <li class="list-group-item">Email: ${engineer.getEmail()}</li>
+            <li class="list-group-item">GitHub: ${engineer.getGithub()}</li>
         </ul>
     </div>
-</div>`
+</div> \n`
 }
 
 function generateIntern(intern) {
-    return `<div class="card" style="width: 18rem;">
+    return `\n <div class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">${intern.getName()}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">${intern.getRole()}</h6>
+        <h6 class="card-subtitle mb-2"><i class="fas fa-user"></i> ${intern.getRole()}</h6>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">${intern.getId()}</li>
-            <li class="list-group-item">${intern.getEmail()}</li>
-            <li class="list-group-item">${intern.getSchool()}</li>
+            <li class="list-group-item">ID: ${intern.getId()}</li>
+            <li class="list-group-item">Email: ${intern.getEmail()}</li>
+            <li class="list-group-item">School: ${intern.getSchool()}</li>
         </ul>
     </div>
-</div>`
+</div> \n`
 }
 
 
 function generateHTML(employees) {
-    
+
     return `<!DOCTYPE html>
     <html lang="en">
     
@@ -52,20 +52,29 @@ function generateHTML(employees) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-        <link rel="stylesheet" href="./style.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./style.css"/>
+        <script src="https://kit.fontawesome.com/2582deff5b.js" crossorigin="anonymous"></script>
         <title>Team Profile Generator</title>
     </head>
     
     <body>
-    ${employees.map((employee) => {
-        if (employee.getRole() == "Manager") {
-            return generateManager(employee);
-        } else if (employee.getRole() == "Engineer") {
-            return generateEngineer(employee);
-        } else if (employee.getRole() == "Intern") {
-            return generateIntern(employee);
-        }
-    })}
+        <header>
+            <h1>THE A-TEAM</h1>
+        </header>
+
+        <main>
+            ${employees.map((employee) => {
+                if (employee.getRole() == "Manager") {
+                    return generateManager(employee);
+                } else if (employee.getRole() == "Engineer") {
+                    return generateEngineer(employee);
+                } else if (employee.getRole() == "Intern") {
+                    return generateIntern(employee);
+                }
+            })}
+        </main>
     </body>
     </html>`
 }

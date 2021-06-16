@@ -110,8 +110,6 @@ const generateIntern = () => {
         })
 }
 
-
-
 //function to initalize the application
 const init = () => {
     inquirer.prompt([
