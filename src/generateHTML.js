@@ -5,7 +5,7 @@ function generateManager(manager) {
         <h6 class="card-subtitle mb-2"><i class="fas fa-user-tie"></i>  ${manager.getRole()}</h6>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${manager.getId()}</li>
-            <li class="list-group-item">Email: ${manager.getEmail()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
             <li class="list-group-item">Office Number: ${manager.getOfficeNumber()}</li>
         </ul>
     </div>
@@ -19,8 +19,8 @@ function generateEngineer(engineer) {
         <h6 class="card-subtitle mb-2"><i class="fas fa-user-astronaut"></i>  ${engineer.getRole()}</h6>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${engineer.getId()}</li>
-            <li class="list-group-item">Email: ${engineer.getEmail()}</li>
-            <li class="list-group-item">GitHub: ${engineer.getGithub()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/harviator" target="_blank">${engineer.getGithub()}</a></li>
         </ul>
     </div>
 </div> \n`
@@ -33,7 +33,7 @@ function generateIntern(intern) {
         <h6 class="card-subtitle mb-2"><i class="fas fa-user"></i> ${intern.getRole()}</h6>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${intern.getId()}</li>
-            <li class="list-group-item">Email: ${intern.getEmail()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
             <li class="list-group-item">School: ${intern.getSchool()}</li>
         </ul>
     </div>
