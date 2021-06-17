@@ -1,5 +1,5 @@
 function generateManager(manager) {
-    return `\n <div class="card" style="width: 18rem;">
+    return `<div class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">${manager.getName()}</h5>
         <h6 class="card-subtitle mb-2"><i class="fas fa-user-tie"></i>  ${manager.getRole()}</h6>
@@ -9,11 +9,11 @@ function generateManager(manager) {
             <li class="list-group-item">Office Number: ${manager.getOfficeNumber()}</li>
         </ul>
     </div>
-</div> \n`
+</div>`
 }
 
 function generateEngineer(engineer) {
-    return `\n <div class="card" style="width: 18rem;">
+    return `<div class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">${engineer.getName()}</h5>
         <h6 class="card-subtitle mb-2"><i class="fas fa-user-astronaut"></i>  ${engineer.getRole()}</h6>
@@ -23,11 +23,11 @@ function generateEngineer(engineer) {
             <li class="list-group-item">GitHub: <a href="https://github.com/harviator" target="_blank">${engineer.getGithub()}</a></li>
         </ul>
     </div>
-</div> \n`
+</div>`
 }
 
 function generateIntern(intern) {
-    return `\n <div class="card" style="width: 18rem;">
+    return `<div class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">${intern.getName()}</h5>
         <h6 class="card-subtitle mb-2"><i class="fas fa-user"></i> ${intern.getRole()}</h6>
@@ -37,13 +37,24 @@ function generateIntern(intern) {
             <li class="list-group-item">School: ${intern.getSchool()}</li>
         </ul>
     </div>
-</div> \n`
+</div> `
 }
 
 
 function generateHTML(employees) {
 
-    return `<!DOCTYPE html>
+    const cards=employees.map((employee) => {
+        if (employee.getRole() == "Manager") {
+            return generateManager(employee);
+        } else if (employee.getRole() == "Engineer") {
+            return generateEngineer(employee);
+        } else if (employee.getRole() == "Intern") {
+            return generateIntern(employee);
+        }
+    }).join('')
+
+    
+    return`<!DOCTYPE html>
     <html lang="en">
     
     <head>
@@ -65,18 +76,12 @@ function generateHTML(employees) {
         </header>
 
         <main>
-            ${employees.map((employee) => {
-                if (employee.getRole() == "Manager") {
-                    return generateManager(employee);
-                } else if (employee.getRole() == "Engineer") {
-                    return generateEngineer(employee);
-                } else if (employee.getRole() == "Intern") {
-                    return generateIntern(employee);
-                }
-            })}
+            ${cards}
         </main>
     </body>
     </html>`
+
+    
 }
 
 module.exports = generateHTML;
