@@ -1,5 +1,14 @@
-//only need to test github property
+const Engineer = require('../lib/Engineer');
 
-//only need to test github method
+describe("Engineer", () => {
+    describe("getGithub() test", () => {
+        it("should return the objects GitHub value using the getGithub method", () => {
+        
+            const github = "face";
 
-//same for each unique property and method for Manager and Intern
+            const obj = new Engineer("Templeton", 2, "tpeck@theateam.com", github);
+
+            expect(obj.getGithub()).toEqual(github);
+        });
+    });
+});
