@@ -67,6 +67,3 @@ THEN I exit the application, and the HTML is generated
 
 ## Walkthrough Video
 https://drive.google.com/file/d/19vxYq2HyE9_aNU1Du0VDqjsRYqih_LZI/view
-
-## Link
-https://harviator.github.io/oop-team-profile-generator/
